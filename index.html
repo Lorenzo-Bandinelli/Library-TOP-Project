@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main">
+        <div class="Top">
+            <div class="Title">My <span class="library">Library</span></div>
+        </div>
+        <table id="mainTable">
+            <thead>
+                <tr>
+                    <th class="tableHeaders  columnName">Book Name</th>
+                    <th class="tableHeaders columnAuthor">Author</th>
+                    <th class="tableHeaders columnPages">Pages</th>
+                    <th class="tableHeaders columnRead">Read</th>
+                    <th class="tableHeaders columnDel">Delete</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                <tr>
+                    <td class="tableCell">1</td>
+                    <td class="tableCell">2</td>
+                    <td class="tableCell">3</td>
+                    <td class="tableCell"><input type="checkbox" title="readCheckbox"></td>
+                    <td class="tableCell"><button class="delButton">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="topButton">Add Book </button>
+    </div>
+
+
+    <div class="bookFormDiv" id="bookFormDiv">
+        <form class="bookForm" action="" id="bookForm">
+            <input type="text" name="name" class="bookName formItem" placeholder="Book Name">
+            <input type="text" name="author" class="authorName formItem" placeholder="Author Name">
+            <input type="text" name="pages" class="pages formItem" placeholder="Number of Pages">
+            <label class="readitText" for="readIt">Have you read it?</label>
+            <input type="checkbox" name="readIt" class="read formItem">
+            <button type="submit" class="formItem">Submit</button>
+        </form>
+    </div>
+
+
+
+    <script src="index.js"></script>
+</body>
+</html>
