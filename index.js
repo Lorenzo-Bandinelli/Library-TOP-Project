@@ -51,9 +51,21 @@ function addBook(evt){
     table.appendChild(tr)
     booklist.push(book)
 
-    
+    this.reset()
     this.style.display = 'none'
     this.parentNode.style.display = 'none'
+}
+
+function getTd(evt, index){
+    return evt.target.parentNode.parentNode.childNodes[index].textContent
+}
+
+function clearBooklist(booklist, evt){
+    booklist.forEach( (element, index) =>{
+        if (element.name == getTd(evt, 0) && element.author == getTd(evt, 1) && element.pages == getTd(evt, 2)){
+            booklist.splice(index, 1)
+        }
+    })
 }
 
 function delBook(evt){
@@ -61,9 +73,10 @@ function delBook(evt){
     if (evt.target.classList.contains('delButton')){
 
         var table = document.querySelector('#mainTable>tbody')
-        console.log(evt.target.parentNode.parentNode, table)
+        console.log(getTd(evt, 0), getTd(evt, 1), getTd(evt, 2), getTd(evt, 3))
         table.removeChild(evt.target.parentNode.parentNode)
-
+        clearBooklist(booklist, evt)
+        console.log(booklist);
     }
 }
 
