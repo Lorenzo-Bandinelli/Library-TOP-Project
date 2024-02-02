@@ -7,7 +7,6 @@ function bookObj(name, author, pages, read){
     this.readIt = read
 }
 
-
 function addBook(evt){
     evt.preventDefault()
     var fromEntries = new FormData(evt.currentTarget)
@@ -32,6 +31,7 @@ function addBook(evt){
     if (book.readIt == 'on'){
         check.checked = 'checked'
     }
+    check.classList.add('readCell')
     readCell.appendChild(check)
     readCell.classList.add('tableCell')
 
@@ -69,15 +69,22 @@ function clearBooklist(booklist, evt){
     })
 }
 
+function changeRead(evt){
+    if (evt.target.classList.contains('readCell')){
+        booklist.forEach( (element, index) =>{
+            if (element.name == getTd(evt, 0) && element.author == getTd(evt, 1) && element.pages == getTd(evt, 2)){
+                booklist[index].readIt = booklist[index].readIt == undefined ? 'On' : undefined
+            }
+        })
+    }
+}
+
 function delBook(evt){
-    console.log(evt.target)
     if (evt.target.classList.contains('delButton')){
 
         var table = document.querySelector('#mainTable>tbody')
-        console.log(getTd(evt, 0), getTd(evt, 1), getTd(evt, 2), getTd(evt, 3))
         table.removeChild(evt.target.parentNode.parentNode)
         clearBooklist(booklist, evt)
-        console.log(booklist);
     }
 }
 
@@ -97,3 +104,4 @@ addButton.addEventListener('click', (evt) => {
 submitForm.addEventListener('submit', addBook)
 
 tbody.addEventListener('click', delBook)
+tbody.addEventListener('click', changeRead)
