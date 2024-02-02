@@ -1,17 +1,18 @@
 var booklist = []
 
-function book(name, author, pages, read){
+function bookObj(name, author, pages, read){
     this.name = name
     this.author = author
     this.pages = pages
-    this.read = read
+    this.readIt = read
 }
 
 
 function addBook(evt){
     evt.preventDefault()
     var fromEntries = new FormData(evt.currentTarget)
-    var book = Object.fromEntries(fromEntries)
+    var EntriesBook = Object.fromEntries(fromEntries)
+    var book = new bookObj(EntriesBook.name, EntriesBook.author, EntriesBook.pages, EntriesBook.readIt)
     var tr = document.createElement('tr')
     var nameCell  = document.createElement('td')
     nameCell.appendChild(document.createTextNode(book.name))
@@ -51,7 +52,7 @@ function addBook(evt){
     table.appendChild(tr)
     booklist.push(book)
 
-    
+    this.reset()
     this.style.display = 'none'
     this.parentNode.style.display = 'none'
 }
@@ -70,7 +71,7 @@ function delBook(evt){
 var bookForm = document.getElementById('bookForm')
 var bookFormDiv = document.getElementById('bookFormDiv')
 var addButton = document.querySelector('.topButton')
-var exampleBook = new book('As crônicas de Nárnia: a última batalha', 'C.s Lewis', '180', 'sim')
+var exampleBook = new bookObj('As crônicas de Nárnia: a última batalha', 'C.s Lewis', '180', 'sim')
 var submitForm = document.querySelector('.bookForm')
 var delButton = document.querySelectorAll('.delButton')
 var tbody = document.querySelector('#tbody')
