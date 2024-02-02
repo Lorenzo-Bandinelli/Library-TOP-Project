@@ -1,10 +1,12 @@
 var booklist = []
 
-function bookObj(name, author, pages, read){
-    this.name = name
-    this.author = author
-    this.pages = pages
-    this.readIt = read
+class bookObj{
+    constructor(name, author, pages, readIt){
+        this.name = name
+        this.author = author
+        this.pages = pages
+        this.readIt = read
+    }
 }
 
 function addBook(evt){
@@ -55,6 +57,7 @@ function addBook(evt){
     this.reset()
     this.style.display = 'none'
     this.parentNode.style.display = 'none'
+    console.log(booklist)
 }
 
 function getTd(evt, index){
@@ -76,6 +79,7 @@ function changeRead(evt){
                 booklist[index].readIt = booklist[index].readIt == undefined ? 'On' : undefined
             }
         })
+        console.log(booklist);
     }
 }
 
@@ -85,6 +89,7 @@ function delBook(evt){
         var table = document.querySelector('#mainTable>tbody')
         table.removeChild(evt.target.parentNode.parentNode)
         clearBooklist(booklist, evt)
+        console.log(booklist);
     }
 }
 
@@ -102,6 +107,5 @@ addButton.addEventListener('click', (evt) => {
                                                 }, false)
 
 submitForm.addEventListener('submit', addBook)
-
 tbody.addEventListener('click', delBook)
 tbody.addEventListener('click', changeRead)
